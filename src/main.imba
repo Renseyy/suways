@@ -1,11 +1,19 @@
 import { Suway } from './suway'
+import 'remixicon/fonts/remixicon.css'
 
-global css body c:warm2 bg:warm8 ff:Arial inset:0 d:vcc
+global css @root
+	inset:0
+	bgc: warm3
+	d: hcc
 
 tag app
-	css bg:white
+	css
+		p: 24px
+		rd: 16px
+		of: hidden
+		bg: white
 	count = 0
 	<self>
-		<Suway>
+		<Suway >
 
 imba.mount <app>
