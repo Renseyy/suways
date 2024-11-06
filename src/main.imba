@@ -14,6 +14,6 @@ tag app
 		bg: white
 	count = 0
 	<self>
-		<Suway >
+		<Suway>
 
 imba.mount <app>

@@ -29,6 +29,8 @@ export tag Suway
 		c: black
 
 	css .cell
+		ff: sans
+		font-variant-numeric: tabular-nums
 		s: 24px
 		ta:center
 		c:black
@@ -70,7 +72,9 @@ export tag Suway
 		self.render!
 
 	def mount
-		document.body.addEventListener 'keydown', do(e) handleWay e
+		document.body.addEventListener 'keydown', do(e)
+			e.preventDefault!
+			handleWay e
 
 	<self>
 		<.topBar>
