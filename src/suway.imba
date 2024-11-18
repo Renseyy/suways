@@ -29,11 +29,12 @@ export tag Suway
 		c: black
 
 	css .cell
+		# zi: 1
 		ff: sans
 		font-variant-numeric: tabular-nums
 		s: 20px
 		ta:center
-		c: black
+		c: gray7
 		bg: white
 		# bd:1px, solid, black
 
@@ -42,7 +43,8 @@ export tag Suway
 		bg: #215a89
 		fw: 800
 		c: white
-		animation: scale 1s infinite
+		pos:relative
+		# animation: scale 1s infinite
 		@keyframes scale
 			0% transform: scale(1)
 			50% transform: scale(1.2)
@@ -62,26 +64,39 @@ export tag Suway
 			25% transform: translateY(-4px) rotate(-17deg)
 			30% transform: translateY(0) rotate(0)
 
+	css .arrow
+		c: #215a89
+		s: 8px
+		bg: transparent
+		pos:absolute
+		animation: scale 1s infinite
+		# box-shadow: 0px 0px 10px black
+		zi: -1
+		@keyframes scale
+			0% transform: rotate(-45deg) scale(1)
+			50% transform: rotate(-45deg) scale(1.2)
+			100% transform: rotate(-45deg) scale(1)
 
 	score\number = 0
 	matrix\number[][] = getMatrix!
 	done\Set<string> = new Set!
 	isIntroPlaying = false
 	miniLogoHide = true
-	time\number = 45_000
-	
+	init = true
+	time\number = 0
 
-	currentPoint\[number, number] = [0, 0]
+
+	currentPoint\[number, number] = [19, 19]
 
 	def reset
+		init = false
 		score = 0
 		time\number = 45_000
 		matrix = getMatrix!
 		done = new Set!
-		currentPoint = [19, 19]
+		currentPoint = [0, 0]
 		isIntroPlaying = true
 		miniLogoHide = true
-		$intro.play!
 		subtractApp!
 
 	def handleWay e\KeyboardEvent
@@ -106,10 +121,10 @@ export tag Suway
 		miniLogoHide = false
 
 	def subtractApp
-		time -= 100
+		time -= 10
 		self.render!
-		if time > 10
-			setTimeout subtractApp.bind(this), 100
+		if time > 10 and currentPoint[0] != 19 and currentPoint[1] != 19
+			setTimeout subtractApp.bind(this), 10
 
 	def play
 		time = 45_000
@@ -132,8 +147,8 @@ export tag Suway
 	def replayIntro
 		console.log 'replay'
 		setTimeout playIntro.bind(this), 1_000
-	
-		
+
+
 	<self>
 		css
 			inset: 0
@@ -161,8 +176,8 @@ export tag Suway
 							<span.count> score
 						<div>
 							"Czas:"
-							<span.count> 
-								(Math.round time / 1000) 
+							<span.count>
+								(Math.round time / 1000)
 								<span [fs: 400]> "s"
 					<table.table> for i in [0 ... 20]
 						<tr> for j in [0 ... 20]
@@ -174,9 +189,27 @@ export tag Suway
 								else
 									matrix[i][j]
 
-								if isDone
-									<div.arrow>
-									<div.arrow>
+								if isCurrentPoint
+									if(currentPoint[1] != 19)
+										<div.arrow>
+											css
+												s: 8px
+												bg: transparent
+												pos:absolute
+												r: -8px
+												t: 8px
+												bdr: 2px solid #215a89
+												bdb: 2px solid #215a89
+									if(currentPoint[0] != 19)
+										<div.arrow>
+											css
+												s: 8px
+												bg: transparent
+												pos:absolute
+												r: 6px
+												b: -8px
+												bdl: 2px solid #215a89
+												bdb: 2px solid #215a89
 					if currentPoint[0] == 19 and currentPoint[1] == 19
 						<div ease>
 							css
@@ -186,26 +219,32 @@ export tag Suway
 								p: 16px
 								rd: 8px
 								bg: rgba(0, 0, 0, 0.7)
-						<div>
-							css
-								d: flex
-								fld: column
-								g: 24px
-								pos: absolute
-								l: 50%
-								top: 50%
-								transform: translate(-50%, -50%)
-								bg: warm1
-								p: 24px
-								rd: 8px
-								ff: sans
+						if not init
 							<div>
-								<div> "Twój wynik to"
-									css fs: 16px
-								<div> score
-									css fs: 24px
-							<div>
-								<div> "Zdobyty w czasie"
+								css
+									d: flex
+									fld: column
+									g: 24px
+									pos: absolute
+									l: 50%
+									miw: 240px
+									mih: 240px
+									top: 50%
+									transform: translate(-50%, -50%)
+									bg: warm1
+									p: 40px
+									rd: 8px
+									ff: sans
+									jc: center
+								<div>
+									<div> "Twój wynik to"
+										css fs: 16px
+									<div> score + " punktów"
+										css fs: 24px
+								<div>
+									<div> "Zdobyty w czasie"
+									<div> (45_000 - time) + " ms"
+										css fs: 24px
 				<div>
 					<div>
 						<video$intro @loadeddata=playIntro muted @ended=replayIntro>
@@ -236,5 +275,5 @@ export tag Suway
 									b: 40px
 								css @hover
 									bg: warm4
-				
+
 
