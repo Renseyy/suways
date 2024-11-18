@@ -35,7 +35,7 @@ export tag Suway
 		ta:center
 		c: black
 		bg: white
-		bd:1px, solid, black
+		# bd:1px, solid, black
 
 	css .done bg: black fw: 800 c: white
 	css .currentPoint
@@ -66,93 +66,175 @@ export tag Suway
 	score\number = 0
 	matrix\number[][] = getMatrix!
 	done\Set<string> = new Set!
+	isIntroPlaying = false
+	miniLogoHide = true
+	time\number = 45_000
+	
 
 	currentPoint\[number, number] = [0, 0]
 
 	def reset
 		score = 0
+		time\number = 45_000
 		matrix = getMatrix!
 		done = new Set!
-		currentPoint = [0, 0]
+		currentPoint = [19, 19]
+		isIntroPlaying = true
+		miniLogoHide = true
+		$intro.play!
+		subtractApp!
 
 	def handleWay e\KeyboardEvent
-		if e.key is 'ArrowRight' and currentPoint[1] < 19
-			done.add `{currentPoint[0]}x{currentPoint[1]}`
-			currentPoint[1]++
-			score += matrix[currentPoint[0]][currentPoint[1]]
+		if time > 0
+			if e.key is 'ArrowRight' and currentPoint[1] < 19
+				done.add `{currentPoint[0]}x{currentPoint[1]}`
+				currentPoint[1]++
+				score += matrix[currentPoint[0]][currentPoint[1]]
 
-		else if e.key is 'ArrowDown' and currentPoint[0] < 19
-			done.add `{currentPoint[0]}x{currentPoint[1]}`
-			currentPoint[0]++
-			score += matrix[currentPoint[0]][currentPoint[1]]
-		self.render!
+			else if e.key is 'ArrowDown' and currentPoint[0] < 19
+				done.add `{currentPoint[0]}x{currentPoint[1]}`
+				currentPoint[0]++
+				score += matrix[currentPoint[0]][currentPoint[1]]
+			self.render!
 
 	def mount
 		document.body.addEventListener 'keydown', do(e)
 			e.preventDefault!
 			handleWay e
 
+	def showAfter
+		miniLogoHide = false
+
+	def subtractApp
+		time -= 100
+		self.render!
+		if time > 10
+			setTimeout subtractApp.bind(this), 100
+
+	def play
+		time = 45_000
+		subtractApp
+
+	def playIntro
+		console.log 'playIntro'
+		$intro.play!
+		setTimeout stopIntro.bind(this), 5_000
+
+	def stopIntro
+		console.log 'stopIntro'
+		$intro.pause!
+		setTimeout endIntro.bind(this), 7_000
+
+	def endIntro
+		console.log 'endIntro'
+		$intro.play!
+
+	def replayIntro
+		console.log 'replay'
+		setTimeout playIntro.bind(this), 1_000
+	
+		
 	<self>
 		css
+			inset: 0
+			s: 100%
 			of: hidden
-			d: flex
-			g: 40px
-			ai: center
 		<div>
-			<.topBar>
-				"Wynik:"
-				<span.count> score
-			<table.table> for i in [0 ... 20]
-				<tr> for j in [0 ... 20]
-					let isDone = done.has `{i}x{j}`
-					let isCurrentPoint = (currentPoint[0] is i) and (currentPoint[1] is j)
-					<td.cell .done=isDone .currentPoint=isCurrentPoint>
-						if i is 0 and j is 0 or i is 19 and j is 19
-							<i.flag=(currentPoint[0] != 19 or currentPoint[1] != 19) .ri-flag-2-fill>
-						else
-							matrix[i][j]
-		<div>
+			css
+				s: 100%
+				of: hidden
+				bg: white
 			<div>
-				<video autoplay muted>
-					<source src='/teambit_logo_in_white.mp4'  type="video/mp4">
-					"Your browser does not support the video tag."
-					css s: 1024px
 				css
-					d:flex
-					ai: center
-					jc:center
 					of: hidden
-					s: 512px
-		if currentPoint[0] == 19 and currentPoint[1] == 19
-			<div ease>
-				css
-					pos: absolute
-					s: 100%
-					inset: 0
-					bg: rgba(0, 0, 0, 0.7)
-			<div>
-				css
 					d: flex
-					fld: column
-					g: 24px
-					pos: absolute
-					l: 50%
-					top: 50%
-					transform: translate(-50%, -50%)
-					bg: warm1
-					p: 24px
-					rd: 8px
+					g: 40px
+					jc: space-evenly
+					ai: center
+					s: 100%
+				<div>
+					css pos: relative
+					<.topBar>
+						css d: hcs
+						<div>
+							"Wynik:"
+							<span.count> score
+						<div>
+							"Czas:"
+							<span.count> 
+								(Math.round time / 1000) 
+								<span [fs: 400]> "s"
+					<table.table> for i in [0 ... 20]
+						<tr> for j in [0 ... 20]
+							let isDone = done.has `{i}x{j}`
+							let isCurrentPoint = (currentPoint[0] is i) and (currentPoint[1] is j)
+							<td.cell .done=isDone .currentPoint=isCurrentPoint>
+								if i is 0 and j is 0 or i is 19 and j is 19
+									<i.flag=(currentPoint[0] != 19 or currentPoint[1] != 19) .ri-flag-2-fill>
+								else
+									matrix[i][j]
 
-				"Udało ci się przejść z naszą planszę z wynikiem {score}!"
-					css fs: 16px
-				<button @click=reset> "Ja chcę jeszcze raaz!"
-					css
-						bd: none
-						p: 8px
-						font: inherit
-						rd: 8px
-						bg: warm3
-						cursor: pointer
-					css @hover
-						bg: warm4
+								if isDone
+									<div.arrow>
+									<div.arrow>
+					if currentPoint[0] == 19 and currentPoint[1] == 19
+						<div ease>
+							css
+								pos: absolute
+								s: 100%
+								inset: -16px
+								p: 16px
+								rd: 8px
+								bg: rgba(0, 0, 0, 0.7)
+						<div>
+							css
+								d: flex
+								fld: column
+								g: 24px
+								pos: absolute
+								l: 50%
+								top: 50%
+								transform: translate(-50%, -50%)
+								bg: warm1
+								p: 24px
+								rd: 8px
+								ff: sans
+							<div>
+								<div> "Twój wynik to"
+									css fs: 16px
+								<div> score
+									css fs: 24px
+							<div>
+								<div> "Zdobyty w czasie"
+				<div>
+					<div>
+						<video$intro @loadeddata=playIntro muted @ended=replayIntro>
+							<source src='/teambit_logo_full_white.mp4'  type="video/mp4">
+							"Your browser does not support the video tag."
+							css s: 1024px pe: none
+
+						css
+							d:flex
+							ai: center
+							jc:center
+							of: hidden
+							s: 512px
+						if currentPoint[0] == 19 and currentPoint[1] == 19
+							<button @click=reset ease> "Losuj planszę i rozpocznij"
+								css
+									bd: none
+									p: 16px
+									font: inherit
+									rd: 8px
+									bg: #215a89
+									c: white
+									fw: 800
+									cursor: pointer
+									pos: absolute
+									ff: sans
+									fw: 800
+									b: 40px
+								css @hover
+									bg: warm4
+				
 

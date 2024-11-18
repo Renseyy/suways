@@ -7,11 +7,6 @@ global css @root
 	d: hcc
 
 tag app
-	css
-		p: 24px
-		rd: 16px
-		of: hidden
-		bg: white
 	count = 0
 	<self>
 		<Suway>
