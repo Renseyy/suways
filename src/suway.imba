@@ -71,7 +71,7 @@ export tag Suway
 		pos:absolute
 		animation: scale 1s infinite
 		# box-shadow: 0px 0px 10px black
-		zi: -1
+		# zi: -1
 		@keyframes scale
 			0% transform: rotate(-45deg) scale(1)
 			50% transform: rotate(-45deg) scale(1.2)
