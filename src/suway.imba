@@ -31,7 +31,7 @@ export tag Suway
 	css .cell
 		ff: sans
 		font-variant-numeric: tabular-nums
-		s: 24px
+		s: 20px
 		ta:center
 		c:black
 		bd:1px, solid, black
@@ -55,20 +55,26 @@ export tag Suway
 
 	score\number = 0
 	matrix\number[][] = getMatrix!
-	done\Set<string> = new Set()
+	done\Set<string> = new Set!
 
 	currentPoint\[number, number] = [0, 0]
 
+	def reset
+		score = 0
+		matrix = getMatrix!
+		done = new Set!
+		currentPoint = [0, 0]
 
 	def handleWay e\KeyboardEvent
-		if e.key is 'ArrowRight'
+		if e.key is 'ArrowRight' and currentPoint[1] < 19
 			done.add `{currentPoint[0]}x{currentPoint[1]}`
-			score += matrix[currentPoint[1]][currentPoint[0]]
 			currentPoint[1]++
-		else if e.key is 'ArrowDown'
+			score += matrix[currentPoint[0]][currentPoint[1]]
+			
+		else if e.key is 'ArrowDown' and currentPoint[0] < 19
 			done.add `{currentPoint[0]}x{currentPoint[1]}`
-			score += matrix[currentPoint[1]][currentPoint[0]]
-			currentPoint[0]++
+			currentPoint[0]++	
+			score += matrix[currentPoint[0]][currentPoint[1]]
 		self.render!
 
 	def mount
@@ -77,6 +83,8 @@ export tag Suway
 			handleWay e
 
 	<self>
+		css 
+			of: hidden
 		<.topBar>
 			"Wynik:"
 			<span.count> score
@@ -86,7 +94,39 @@ export tag Suway
 				let isCurrentPoint = (currentPoint[0] is i) and (currentPoint[1] is j)
 				<td.cell .done=isDone .currentPoint=isCurrentPoint>
 					if i is 0 and j is 0 or i is 19 and j is 19
-						<i.flag .ri-flag-2-fill>
+						<i.flag=(currentPoint[0] != 19 or currentPoint[1] != 19) .ri-flag-2-fill>
 					else
 						matrix[i][j]
+		if currentPoint[0] == 19 and currentPoint[1] == 19
+			<div ease>
+				css
+					pos: absolute
+					s: 100%
+					inset: 0
+					bg: rgba(0, 0, 0, 0.7)
+			<div>
+				css
+					d: flex
+					fld: column
+					g: 24px
+					pos: absolute
+					l: 50%
+					top: 50%
+					transform: translate(-50%, -50%)
+					bg: warm1
+					p: 24px
+					rd: 8px
+
+				"Udało ci się przejść z naszą planszę z wynikiem {score}!"
+					css fs: 16px
+				<button @click=reset> "Ja chcę jeszcze raaz!"
+					css
+						bd: none
+						p: 8px
+						font: inherit
+						rd: 8px
+						bg: warm3
+						cursor: pointer
+					css @hover
+						bg: warm4
 
