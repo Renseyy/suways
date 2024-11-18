@@ -1,0 +1,149 @@
+{
+  "\u0000vite/modulepreload-polyfill.js": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "index.html": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/component.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/context.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/core.web.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/flags.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/fragment.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/indexed-list.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/mount.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/dom/transitions.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/events/core.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/events/keyboard.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/events/mouse.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/runtime.mjs": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/scheduler.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/imba/src/imba/utils.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "node_modules/remixicon/fonts/remixicon.css": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "src/main.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "src/main.imba?imba&type=style&lang.css": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "src/suway.imba": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ],
+  "src/suway.imba?imba&type=style&lang.css": [
+    "/assets/remixicon-BeSuxUPl.eot",
+    "/assets/remixicon-BVUuWktn.woff2",
+    "/assets/remixicon-BXYCkY-0.woff",
+    "/assets/remixicon-BttEdIcK.ttf",
+    "/assets/remixicon-D4vE9kYg.svg"
+  ]
+}
