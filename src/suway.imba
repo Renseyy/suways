@@ -14,7 +14,7 @@ def getMatrix
 					matrix[i][j] = randomInt 1, 9
 
 export tag Suway
-	css .table border-collapse:collapse bd: none
+	css .table  bd: none
 
 	css .topBar
 		pb: 24px
@@ -33,11 +33,21 @@ export tag Suway
 		font-variant-numeric: tabular-nums
 		s: 20px
 		ta:center
-		c:black
+		c: black
+		bg: white
 		bd:1px, solid, black
 
-	css .done bg:gray3
-	css .currentPoint bg: green2
+	css .done bg: black fw: 800 c: white
+	css .currentPoint
+		bg: #215a89
+		fw: 800
+		c: white
+		animation: scale 1s infinite
+		@keyframes scale
+			0% transform: scale(1)
+			50% transform: scale(1.2)
+			100% transform: scale(1)
+
 
 	css .flag::before
 		d: block
@@ -70,10 +80,10 @@ export tag Suway
 			done.add `{currentPoint[0]}x{currentPoint[1]}`
 			currentPoint[1]++
 			score += matrix[currentPoint[0]][currentPoint[1]]
-			
+
 		else if e.key is 'ArrowDown' and currentPoint[0] < 19
 			done.add `{currentPoint[0]}x{currentPoint[1]}`
-			currentPoint[0]++	
+			currentPoint[0]++
 			score += matrix[currentPoint[0]][currentPoint[1]]
 		self.render!
 
@@ -83,20 +93,36 @@ export tag Suway
 			handleWay e
 
 	<self>
-		css 
+		css
 			of: hidden
-		<.topBar>
-			"Wynik:"
-			<span.count> score
-		<table.table> for i in [0 ... 20]
-			<tr> for j in [0 ... 20]
-				let isDone = done.has `{i}x{j}`
-				let isCurrentPoint = (currentPoint[0] is i) and (currentPoint[1] is j)
-				<td.cell .done=isDone .currentPoint=isCurrentPoint>
-					if i is 0 and j is 0 or i is 19 and j is 19
-						<i.flag=(currentPoint[0] != 19 or currentPoint[1] != 19) .ri-flag-2-fill>
-					else
-						matrix[i][j]
+			d: flex
+			g: 40px
+			ai: center
+		<div>
+			<.topBar>
+				"Wynik:"
+				<span.count> score
+			<table.table> for i in [0 ... 20]
+				<tr> for j in [0 ... 20]
+					let isDone = done.has `{i}x{j}`
+					let isCurrentPoint = (currentPoint[0] is i) and (currentPoint[1] is j)
+					<td.cell .done=isDone .currentPoint=isCurrentPoint>
+						if i is 0 and j is 0 or i is 19 and j is 19
+							<i.flag=(currentPoint[0] != 19 or currentPoint[1] != 19) .ri-flag-2-fill>
+						else
+							matrix[i][j]
+		<div>
+			<div>
+				<video autoplay muted>
+					<source src='/teambit_logo_in_white.mp4'  type="video/mp4">
+					"Your browser does not support the video tag."
+					css s: 1024px
+				css
+					d:flex
+					ai: center
+					jc:center
+					of: hidden
+					s: 512px
 		if currentPoint[0] == 19 and currentPoint[1] == 19
 			<div ease>
 				css

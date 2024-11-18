@@ -1,4 +1,4 @@
-import { Suway } from './suway'
+import { Suway } from './suway.imba'
 import 'remixicon/fonts/remixicon.css'
 
 global css @root

@@ -1,16 +1,16 @@
 {
-  "name": "suways",
+  "name": "newx",
+  "type": "module",
   "scripts": {
-    "dev": "imba -w server.imba",
-    "build": "imba build server.imba",
-    "preview": "node dist/server.js",
-    "prod": "npx pm2 start dist/server.js"
-  },
-  "dependencies": {
-    "express": "^4.21.1",
-    "remixicon": "^4.5.0"
+    "dev": "imba serve",
+    "build": "imba build",
+    "preview": "imba preview"
   },
   "devDependencies": {
-    "imba": "^2.0.0-alpha.237"
+    "imba": "^2.0.0-alpha.237",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "remixicon": "^4.5.0"
   }
 }
