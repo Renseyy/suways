@@ -86,7 +86,7 @@ export tag Suway
 	time\number = 0
 
 
-	currentPoint\[number, number] = [19, 19]
+	currentPoint\[number, number] = [20, 20]
 
 	def reset
 		init = false
@@ -123,8 +123,10 @@ export tag Suway
 	def subtractApp
 		time -= 10
 		self.render!
-		if time > 10 and currentPoint[0] != 19 and currentPoint[1] != 19
+		if time > 0 and currentPoint[0] != 19 and currentPoint[1] != 19
 			setTimeout subtractApp.bind(this), 10
+
+
 
 	def play
 		time = 45_000
@@ -185,7 +187,7 @@ export tag Suway
 							let isCurrentPoint = (currentPoint[0] is i) and (currentPoint[1] is j)
 							<td.cell .done=isDone .currentPoint=isCurrentPoint>
 								if i is 0 and j is 0 or i is 19 and j is 19
-									<i.flag=(currentPoint[0] != 19 or currentPoint[1] != 19) .ri-flag-2-fill>
+									<i.flag=((currentPoint[0] != 19 or currentPoint[1] != 19) and time >= 0) .ri-flag-2-fill>
 								else
 									matrix[i][j]
 
@@ -210,7 +212,7 @@ export tag Suway
 												b: -8px
 												bdl: 2px solid #215a89
 												bdb: 2px solid #215a89
-					if currentPoint[0] == 19 and currentPoint[1] == 19
+					if (currentPoint[0] == 19 and currentPoint[1] == 19) or time <= 0
 						<div ease>
 							css
 								pos: absolute
@@ -258,7 +260,7 @@ export tag Suway
 							jc:center
 							of: hidden
 							s: 512px
-						if currentPoint[0] == 19 and currentPoint[1] == 19
+						if (currentPoint[0] == 19 and currentPoint[1] == 19) or time <= 0
 							<button @click=reset ease> "Losuj planszę i rozpocznij"
 								css
 									bd: none

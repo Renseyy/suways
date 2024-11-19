@@ -2703,7 +2703,7 @@ const ne = class ne extends ee {
       (this.miniLogoHide = t && (s = t.miniLogoHide) !== void 0 ? s : !0),
       (this.init = t && (s = t.init) !== void 0 ? s : !0),
       (this.time = t && (s = t.time) !== void 0 ? s : 0),
-      (this.currentPoint = t && (s = t.currentPoint) !== void 0 ? s : [19, 19]);
+      (this.currentPoint = t && (s = t.currentPoint) !== void 0 ? s : [20, 20]);
   }
   reset() {
     return (
@@ -2752,9 +2752,7 @@ const ne = class ne extends ee {
     if (
       ((this.time -= 10),
       this.render(),
-      this.time > 10 &&
-        this.currentPoint[0] != 19 &&
-        this.currentPoint[1] != 19)
+      this.time > 0 && this.currentPoint[0] != 19 && this.currentPoint[1] != 19)
     )
       return setTimeout(this.subtractApp.bind(this), 10);
   }
@@ -2895,8 +2893,8 @@ const ne = class ne extends ee {
                 (d[Xs] = e = m("i", null, `ri-flag-2-fill ${u}`, null))),
               ae || (e[V] = d),
               (fe =
-                this.currentPoint[0] != 19 ||
-                this.currentPoint[1] != 19 ||
+                ((this.currentPoint[0] != 19 || this.currentPoint[1] != 19) &&
+                  this.time >= 0) ||
                 void 0),
               fe === e[qe] || ((Ot |= 2), (e[qe] = fe)),
               Ot & 2 && e.flag$(`ri-flag-2-fill ${u} ` + (e[qe] ? "flag" : "")))
@@ -2925,8 +2923,8 @@ const ne = class ne extends ee {
     return (
       I[js](D),
       (n = l = null),
-      this.currentPoint[0] == 19 &&
-        this.currentPoint[1] == 19 &&
+      ((this.currentPoint[0] == 19 && this.currentPoint[1] == 19) ||
+        this.time <= 0) &&
         ((Ft = 1),
         (n = o[nr]) ||
           ((Ft = 0), (o[nr] = n = m("div", null, `z13dtrln-aw ${u}`, null))),
@@ -2985,8 +2983,8 @@ const ne = class ne extends ee {
       R || M[_]("Your browser does not support the video tag."),
       R || rt[zl](M),
       (h = null),
-      this.currentPoint[0] == 19 &&
-        this.currentPoint[1] == 19 &&
+      ((this.currentPoint[0] == 19 && this.currentPoint[1] == 19) ||
+        this.time <= 0) &&
         ((nt = 1),
         (h = o[yr]) ||
           ((nt = 0), (o[yr] = h = m("button", null, `z13dtrln-bi ${u}`, null))),
